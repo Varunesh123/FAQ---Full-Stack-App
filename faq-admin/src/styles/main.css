@@ -50,3 +50,9 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.text-red-500 {
+  color: #CC4444;
+  font-weight: 500;
+  padding-bottom: 25px;
+}

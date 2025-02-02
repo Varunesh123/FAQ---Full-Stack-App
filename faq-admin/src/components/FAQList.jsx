@@ -20,6 +20,8 @@ const FAQList = () => {
   return (
     <div className="container">
       <h2 className="text-center">Frequently Asked Questions</h2>
+
+      <div className='text-red-500'>If you can't see any faq's or they take too long to fetch, please wait for 2 minutes, as this service is hosted on a free Instance or Render, and therefore, it shuts down with 15 minutes of inactivity. The server soft boots in approximately 2 minutes.</div>
       
       <div>
         <select
@@ -39,7 +41,7 @@ const FAQList = () => {
             <h1>{faq.question}</h1>
             <div>{faq.answer}</div>
           </li>
-        ))}
+        )) }
       </ul>
     </div>
   );
