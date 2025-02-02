@@ -1,0 +1,12 @@
+# Ignore node_modules in both frontend and backend
+faq-admin/node_modules/
+faq-api/node_modules/
+
+# Ignore build files
+faq-admin/dist/
+faq-api/build/
+
+# Ignore environment variables
+faq-admin/.env
+faq-api/.env
+

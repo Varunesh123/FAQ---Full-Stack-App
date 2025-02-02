@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-translate": "^3.738.0",
+    "@google-cloud/translate": "^8.5.0",
+    "@vitalets/google-translate-api": "^9.2.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "google-translate-api": "^2.3.0",
+    "mongoose": "^8.9.5",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "eslint": "^9.19.0",
+    "mocha": "^11.1.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
+  }
+}
