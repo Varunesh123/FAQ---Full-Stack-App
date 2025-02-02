@@ -39,8 +39,6 @@ const createFAQ = async (req, res) => {
     })
     await Promise.all(answer_promises)
 
-    console.log("Languages Translated");
-
     const data = {
       question: {
         ...question_translated,
@@ -66,13 +64,14 @@ const getFAQs = async (req, res) => {
   try {
 
     let lang = (req.params ? req.params.lang : 'en') || 'en';
-    console.log(lang);
+    
+    if (redisClient){
+      const cacheKey = `faqs_${lang}`;
 
-    const cacheKey = `faqs_${lang}`;
-
-    const cachedData = await redisClient.get(cacheKey);
-    if (cachedData) {
-      return res.status(200).json(JSON.parse(cachedData));
+      const cachedData = await redisClient.get(cacheKey);
+      if (cachedData) {
+        return res.status(200).json(JSON.parse(cachedData));
+      }
     }
 
     let faqs = await FAQ.find();
@@ -85,7 +84,9 @@ const getFAQs = async (req, res) => {
       }));
     }
 
-    await redisClient.setEx(cacheKey, process.env.CACHE_TTL || 300, JSON.stringify(faqs));
+    if (redisClient){
+      await redisClient.setEx(cacheKey, process.env.CACHE_TTL || 300, JSON.stringify(faqs));
+    }
     return res.status(200).json(faqs);
   } catch (error) {
     return res.status(500).json({ message: error.message });
